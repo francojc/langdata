@@ -12,4 +12,6 @@ A dataset containing a corpus of spontaneous conversations from 440 speakers of 
 
 **Brown Corpus**
 
+A dataset containing the 1,155,866 tokenized words for 15 genre categories of a sample of American English. Original corpus files and documentation from the Natural Language Toolkit data repository is available [here](http://www.nltk.org/nltk_data/).
+
 ...
