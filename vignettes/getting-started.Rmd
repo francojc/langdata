@@ -29,9 +29,11 @@ install.packages("devtools")
 
 Then install `langdata`.
 
-```{r install-langdata}
+```{r install-langdata, eval=FALSE}
 devtools::install_github("francojc/langdata")
 ```
+
+## Load the package library
 
 You can now load the package to make the datasets available. 
 
@@ -39,10 +41,62 @@ You can now load the package to make the datasets available.
 library(langdata)
 ```
 
-The current list of packages:
+The current list of datasets:
 
 ```{r datasets-langdata, echo=FALSE}
-d <- data(package = "langdata")
-d$results %>% as_tibble() %>% knitr::kable()
+data(package = "langdata")$results %>% 
+  as_tibble() %>% 
+  knitr::kable()
 ```
 
+To load a particular dataset use the `data()` function.  
+
+```{r load-dataset-swda}
+data(swda) # load the `swda` dataset
+ls() # verify the dataset is now in the environment
+```
+
+To get a description of a dataset use the `?` operator for help.
+
+```{r dataset-help, eval=FALSE}
+?swda
+```
+
+To aid in visualization and transformation operations, it is recommended that you use the `tidyverse` meta package. Loading the `tidyverse` package library will automatically load the following packages:
+
+```{r tidyverse-packages, message=FALSE}
+library(tidyverse) # load tidyverse
+tidyverse_packages() # list tidyverse packages
+```
+
+## Example
+
+To view a summary of the data use the `glimpse()` function.
+
+```{r view-swda}
+glimpse(swda)
+```
+
+We can explore some of the demographic information for the speakers using the `group_by()` function to group the data and then pass this information to the `count()` function to return the number of rows in each group.
+
+```{r swda-sex}
+swda %>% 
+  group_by(sex) %>% 
+  count()
+```
+
+```{r swda-birth}
+swda %>% 
+  group_by(birth_year) %>% 
+  count(sort = TRUE)
+```
+
+You can add multiple grouping variables to `group_by()` to do cross-tabulations. 
+
+```{r}
+swda %>% 
+  group_by(sex, dialect_area) %>% 
+  count()
+```
+
+...

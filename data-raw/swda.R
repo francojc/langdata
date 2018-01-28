@@ -12,29 +12,7 @@ pacman::p_load(tidyverse)
 
 # _ Functions -------------------------------------------------------------
 
-get_compressed_data <- function(url, target_dir, force = FALSE) {
-  # Get the extension of the target file
-  ext <- tools::file_ext(url)
-  # Check to see if the target file is a compressed file
-  if(!ext %in% c("zip", "gz", "tar")) stop("Target file given is not supported")
-  # Check to see if the data already exists
-  if(!dir.exists(target_dir) | force == TRUE) { # if data does not exist, download/ decompress
-    cat("Creating target data directory \n") # print status message
-    dir.create(path = target_dir, recursive = TRUE, showWarnings = FALSE) # create target data directory
-    cat("Downloading data... \n") # print status message
-    temp <- tempfile() # create a temporary space for the file to be written to
-    download.file(url = url, destfile = temp) # download the data to the temp file
-    # Decompress the temp file in the target directory
-    if(ext == "zip") {
-      unzip(zipfile = temp, exdir = target_dir, junkpaths = TRUE) # zip files
-    } else {
-      untar(tarfile = temp, exdir = target_dir) # tar, gz files
-    }
-    cat("Data downloaded! \n") # print status message
-  } else { # if data exists, don't download it again
-    cat("Data already exists \n") # print status message
-  }
-}
+source("data-raw/_functions/acquire_functions.R")
 
 extract_swda_metadata <- function(file) {
   # Function: to read a Switchboard Corpus Dialogue file and extract metadata
@@ -163,6 +141,8 @@ swda[!complete.cases(swda), ] %>% select(speaker_id) %>% unique() # id speaker(s
 swda <- # remove speaker 155
   swda %>%
   filter(speaker_id != 155)
+
+# Write data to disk ------------------------------------------------------
 
 # Write the curated dataset to the `data-raw/derived/` directory
 write_csv(x = swda, path = "data-raw/derived/swda.csv")
