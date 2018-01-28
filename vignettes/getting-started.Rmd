@@ -1,0 +1,40 @@
+---
+title: "Getting Started"
+author: "Jerid Francom"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The `langdata` package provides a set of linguistic datasets useful for practicing visualization, transformation and analysis techniques on language datasets. The data is compiled from freely available online sources and curated using the 'tidy' dataset principle. 
+
+## Installation
+
+This package is available as a repository on GitHub. To install the package from GitHub you will need the `devtools` package. 
+
+```{r install-devtools, eval=FALSE}
+install.packages("devtools")
+```
+
+Then install `langdata`.
+
+```{r install-langdata, eval=FALSE}
+devtools::install_github("francojc/langdata")
+```
+
+You can now load the package to make the datasets available. 
+
+```{r load-langdata, eval=FALSE}
+library(langdata)
+```
+

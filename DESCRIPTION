@@ -1,0 +1,17 @@
+Package: langdata
+Type: Package
+Title: Practice Language Datasets
+Version: 0.1.0
+Authors@R: person("Jerid", "Francom", email = "francojc@wfu.edu", role = c("aut", "cre"))
+Description: A set of language datasets and the code that creates them. These 
+  datasets provide a starting point for data visualization, transformation and
+  analysis.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+URL: https://francojc.github.io/
+Imports: tidyverse
+RoxygenNote: 6.0.1.9000
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
