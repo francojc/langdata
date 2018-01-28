@@ -168,7 +168,7 @@ swda <- # remove speaker 155
 write_csv(x = swda, path = "data-raw/derived/swda.csv")
 
 # Write the curated dataset to the `data/` directory
-save(swda, file = "data/swda.Rdata")
+save(swda, file = "data/swda.rdata")
 
 # CLEANUP -----------------------------------------------------------------
 

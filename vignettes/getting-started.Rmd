@@ -14,6 +14,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+library(tidyverse)
 ```
 
 The `langdata` package provides a set of linguistic datasets useful for practicing visualization, transformation and analysis techniques on language datasets. The data is compiled from freely available online sources and curated using the 'tidy' dataset principle. 
@@ -28,13 +29,20 @@ install.packages("devtools")
 
 Then install `langdata`.
 
-```{r install-langdata, eval=FALSE}
+```{r install-langdata}
 devtools::install_github("francojc/langdata")
 ```
 
 You can now load the package to make the datasets available. 
 
-```{r load-langdata, eval=FALSE}
+```{r load-langdata}
 library(langdata)
+```
+
+The current list of packages:
+
+```{r datasets-langdata, echo=FALSE}
+d <- data(package = "langdata")
+d$results %>% as_tibble() %>% knitr::kable()
 ```
 
