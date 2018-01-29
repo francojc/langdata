@@ -1,5 +1,4 @@
 Package: langdata
-Type: Package
 Title: Practice Language Datasets
 Version: 0.1.0
 Authors@R: person("Jerid", "Francom", email = "francojc@wfu.edu", role = c("aut", "cre"))
